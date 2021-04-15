@@ -14,10 +14,11 @@ namespace GameDataApi.TrackerNetworkClient
     {
         public TrackerNetworkApexClient() : base()
         {
-            
+
         }
-        
-        public Task<String> Profile(String Platform, String PlatformUserIdentifier){
+
+        public Task<String> Profile(String Platform, String PlatformUserIdentifier)
+        {
             return httpClient.GetStringAsync("https://public-api.tracker.gg/v2/apex/standard/profile/origin/jormakker");
         }
     }
