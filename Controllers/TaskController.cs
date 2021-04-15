@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GameDataApi.TrackerNetworkClient;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,18 +14,19 @@ namespace GameDataApi.Controllers
     public class TaskController : ControllerBase
     {
 
-        private readonly ILogger<TaskController> _logger;
+        private readonly ILogger<TaskController> logger;
+        private readonly ITrackerNetworkApexClient trackerNetworkApexClient;
 
-        public TaskController(ILogger<TaskController> logger)
+        public TaskController(ILogger<TaskController> logger, ITrackerNetworkApexClient trackerNetworkApexClient)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.trackerNetworkApexClient = trackerNetworkApexClient;
         }
 
         [HttpGet]
         [Route("[action]")]
         public String Health()
         {
-            var rng = new Random();
             return "Healthy";
         }
 
@@ -32,8 +34,14 @@ namespace GameDataApi.Controllers
         [Route("[action]")]
         public String Status()
         {
-            var rng = new Random();
             return "Ok";
+        }
+
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<string> ApexAccountAsync()
+        {
+            return await trackerNetworkApexClient.Profile("origin", "Jormakker");
         }
     }
 }
