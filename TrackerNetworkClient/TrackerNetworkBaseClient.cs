@@ -14,10 +14,10 @@ namespace GameDataApi.TrackerNetworkClient
     {
         protected readonly HttpClient httpClient;
 
-        public TrackerNetworkBaseClient()
+        public TrackerNetworkBaseClient(String apiKey)
         {
             this.httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("TRN-Api-Key", "xxxxxx");
+            httpClient.DefaultRequestHeaders.Add("TRN-Api-Key", apiKey);
         }
 
     }

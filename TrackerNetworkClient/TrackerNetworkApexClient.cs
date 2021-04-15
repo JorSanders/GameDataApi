@@ -12,7 +12,7 @@ namespace GameDataApi.TrackerNetworkClient
 {
     public class TrackerNetworkApexClient : TrackerNetworkBaseClient, ITrackerNetworkApexClient
     {
-        public TrackerNetworkApexClient() : base()
+        public TrackerNetworkApexClient(String apiKey) : base(apiKey)
         {
 
         }
