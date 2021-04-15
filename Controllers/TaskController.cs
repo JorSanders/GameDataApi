@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using GameDataApi.TrackerNetworkClient;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using QuickType;
 
 namespace GameDataApi.Controllers
 {
@@ -39,7 +41,7 @@ namespace GameDataApi.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<string> ApexAccountAsync()
+        public async Task<ProfileResponse> ApexAccountAsync()
         {
             return await trackerNetworkApexClient.Profile("origin", "Jormakker");
         }

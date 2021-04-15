@@ -7,7 +7,8 @@ Add the api secret to your user secrets
 ```shell
 dotnet user-secrets set "TrackerNetwork:ApiKey" "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
-Or edit the secrets file here
+
+## Run
 ```shell
-code ~/.microsoft/usersecrets/0f8efc1b-3e3d-49a1-a8c1-7fc0d5b8e91a/secrets.json
+dotnet run
 ```

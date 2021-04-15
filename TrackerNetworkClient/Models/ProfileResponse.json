@@ -1,0 +1,465 @@
+{
+    "data": {
+        "platformInfo": {
+            "platformSlug": "origin",
+            "platformUserId": "Jormakker",
+            "platformUserHandle": "Jormakker",
+            "platformUserIdentifier": "Jormakker",
+            "avatarUrl": "https://secure.download.dm.origin.com/production/avatar/prod/userAvatar/26685623/208x208.PNG",
+            "additionalParameters": null
+        },
+        "userInfo": {
+            "userId": null,
+            "isPremium": false,
+            "isVerified": false,
+            "isInfluencer": false,
+            "isPartner": false,
+            "countryCode": null,
+            "customAvatarUrl": null,
+            "customHeroUrl": null,
+            "socialAccounts": [],
+            "pageviews": 12,
+            "isSuspicious": null
+        },
+        "metadata": {
+            "currentSeason": 2,
+            "activeLegend": "legend_2",
+            "activeLegendName": "Bangalore",
+            "activeLegendStats": [
+                "Smoke Grenade: Enemies Hit"
+            ]
+        },
+        "segments": [
+            {
+                "type": "overview",
+                "attributes": {},
+                "metadata": {
+                    "name": "Lifetime"
+                },
+                "expiryDate": "2021-04-15T19:16:53.61445+00:00",
+                "stats": {
+                    "level": {
+                        "rank": null,
+                        "percentile": 81,
+                        "displayName": "Level",
+                        "displayCategory": "Combat",
+                        "category": null,
+                        "metadata": {},
+                        "value": 268,
+                        "displayValue": "268",
+                        "displayType": "Unspecified"
+                    },
+                    "kills": {
+                        "rank": null,
+                        "percentile": 11,
+                        "displayName": "Kills",
+                        "displayCategory": "Combat",
+                        "category": null,
+                        "metadata": {},
+                        "value": 2,
+                        "displayValue": "2",
+                        "displayType": "Unspecified"
+                    },
+                    "winningKills": {
+                        "rank": null,
+                        "percentile": 68,
+                        "displayName": "Winning Kills",
+                        "displayCategory": "Combat",
+                        "category": null,
+                        "metadata": {},
+                        "value": 5,
+                        "displayValue": "5.00",
+                        "displayType": "Unspecified"
+                    },
+                    "killsAsKillLeader": {
+                        "rank": null,
+                        "percentile": 36,
+                        "displayName": "Kills As Kill Leader",
+                        "displayCategory": "Combat",
+                        "category": null,
+                        "metadata": {},
+                        "value": 4,
+                        "displayValue": "4",
+                        "displayType": "Unspecified"
+                    },
+                    "revives": {
+                        "rank": null,
+                        "percentile": 57,
+                        "displayName": "Revives",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 49,
+                        "displayValue": "49",
+                        "displayType": "Unspecified"
+                    },
+                    "rankScore": {
+                        "rank": null,
+                        "percentile": null,
+                        "displayName": "Rank Score",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {
+                            "iconUrl": "https://trackercdn.com/cdn/apex.tracker.gg/ranks/platinum4.png",
+                            "rankName": "Platinum 4"
+                        },
+                        "value": 4813,
+                        "displayValue": "4,813",
+                        "displayType": "Unspecified"
+                    },
+                    "season6Wins": {
+                        "rank": null,
+                        "percentile": 36,
+                        "displayName": "Season 6 Wins",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 3,
+                        "displayValue": "3",
+                        "displayType": "Unspecified"
+                    }
+                }
+            },
+            {
+                "type": "legend",
+                "attributes": {
+                    "id": "legend_2"
+                },
+                "metadata": {
+                    "name": "Bangalore",
+                    "imageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/bangalore-tile.png",
+                    "tallImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/bangalore-tall.png",
+                    "bgImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/bangalore-concept-bg-small.jpg",
+                    "isActive": true
+                },
+                "expiryDate": "2021-04-15T19:16:53.61445+00:00",
+                "stats": {
+                    "killsAsKillLeader": {
+                        "rank": null,
+                        "percentile": 30,
+                        "displayName": "Kills As Kill Leader",
+                        "displayCategory": "Combat",
+                        "category": null,
+                        "metadata": {},
+                        "value": 3,
+                        "displayValue": "3",
+                        "displayType": "Unspecified"
+                    },
+                    "smokeGrenadeEnemiesHit": {
+                        "rank": null,
+                        "percentile": 53,
+                        "displayName": "Smoke Grenade: Enemies Hit",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 25,
+                        "displayValue": "25",
+                        "displayType": "Unspecified"
+                    },
+                    "doubleTimeDistance": {
+                        "rank": null,
+                        "percentile": 63,
+                        "displayName": "Double Time: Distance",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 25598,
+                        "displayValue": "25,598",
+                        "displayType": "Unspecified"
+                    },
+                    "season6Wins": {
+                        "rank": null,
+                        "percentile": 50,
+                        "displayName": "Season 6 Wins",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 2,
+                        "displayValue": "2",
+                        "displayType": "Unspecified"
+                    }
+                }
+            },
+            {
+                "type": "legend",
+                "attributes": {
+                    "id": "legend_6"
+                },
+                "metadata": {
+                    "name": "Gibraltar",
+                    "imageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/gibraltar-tile.png",
+                    "tallImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/gibraltar-tall.png",
+                    "bgImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/gibraltar-concept-bg-small.jpg",
+                    "isActive": false
+                },
+                "expiryDate": "2021-04-15T19:16:53.61445+00:00",
+                "stats": {
+                    "winningKills": {
+                        "rank": null,
+                        "percentile": 42,
+                        "displayName": "Winning Kills",
+                        "displayCategory": "Combat",
+                        "category": null,
+                        "metadata": {},
+                        "value": 1,
+                        "displayValue": "1.00",
+                        "displayType": "Unspecified"
+                    },
+                    "revives": {
+                        "rank": null,
+                        "percentile": 70,
+                        "displayName": "Revives",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 49,
+                        "displayValue": "49",
+                        "displayType": "Unspecified"
+                    },
+                    "domeDamageBlocked": {
+                        "rank": null,
+                        "percentile": 68,
+                        "displayName": "Dome: Damage Blocked",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 39398,
+                        "displayValue": "39,398",
+                        "displayType": "Unspecified"
+                    },
+                    "season6Wins": {
+                        "rank": null,
+                        "percentile": 39,
+                        "displayName": "Season 6 Wins",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 1,
+                        "displayValue": "1",
+                        "displayType": "Unspecified"
+                    }
+                }
+            },
+            {
+                "type": "legend",
+                "attributes": {
+                    "id": "legend_5"
+                },
+                "metadata": {
+                    "name": "Bloodhound",
+                    "imageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/bloodhound-tile.png",
+                    "tallImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/bloodhound-tall.png",
+                    "bgImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/bloodhound-concept-bg-small.jpg",
+                    "isActive": false
+                },
+                "expiryDate": "2021-04-15T19:16:53.61445+00:00",
+                "stats": {
+                    "eyeEnemiesScanned": {
+                        "rank": null,
+                        "percentile": 43,
+                        "displayName": "Eye: Enemies Scanned",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 619,
+                        "displayValue": "619",
+                        "displayType": "Unspecified"
+                    },
+                    "eyeTrapsScanned": {
+                        "rank": null,
+                        "percentile": 45,
+                        "displayName": "Eye: Traps Scanned",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 142,
+                        "displayValue": "142",
+                        "displayType": "Unspecified"
+                    }
+                }
+            },
+            {
+                "type": "legend",
+                "attributes": {
+                    "id": "legend_1"
+                },
+                "metadata": {
+                    "name": "Wraith",
+                    "imageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/wraith-tile.png",
+                    "tallImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/wraith-tall.png",
+                    "bgImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/wraith-concept-bg-small.jpg",
+                    "isActive": false
+                },
+                "expiryDate": "2021-04-15T19:16:53.61445+00:00",
+                "stats": {
+                    "winningKills": {
+                        "rank": null,
+                        "percentile": 45,
+                        "displayName": "Winning Kills",
+                        "displayCategory": "Combat",
+                        "category": null,
+                        "metadata": {},
+                        "value": 4,
+                        "displayValue": "4.00",
+                        "displayType": "Unspecified"
+                    },
+                    "riftsSquadmatesPhased": {
+                        "rank": null,
+                        "percentile": 56,
+                        "displayName": "Rifts: Squadmates Phased",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 147,
+                        "displayValue": "147",
+                        "displayType": "Unspecified"
+                    },
+                    "phaseWalkTime": {
+                        "rank": null,
+                        "percentile": 45,
+                        "displayName": "Phase Walk: Time",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 1244,
+                        "displayValue": "1,244",
+                        "displayType": "Unspecified"
+                    }
+                }
+            },
+            {
+                "type": "legend",
+                "attributes": {
+                    "id": "legend_9"
+                },
+                "metadata": {
+                    "name": "Octane",
+                    "imageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/octane-tile.png",
+                    "tallImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/octane-tall.png",
+                    "bgImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/octane-concept-bg-small.jpg",
+                    "isActive": false
+                },
+                "expiryDate": "2021-04-15T19:16:53.61445+00:00",
+                "stats": {
+                    "jumpPadAlliesLaunched": {
+                        "rank": null,
+                        "percentile": 16,
+                        "displayName": "Jump Pad Allies Launched",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 39,
+                        "displayValue": "39",
+                        "displayType": "Unspecified"
+                    },
+                    "passiveHealthRegenerated": {
+                        "rank": null,
+                        "percentile": 30,
+                        "displayName": "Passive Health Regenerated",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 10234,
+                        "displayValue": "10,234",
+                        "displayType": "Unspecified"
+                    }
+                }
+            },
+            {
+                "type": "legend",
+                "attributes": {
+                    "id": "legend_11"
+                },
+                "metadata": {
+                    "name": "Crypto",
+                    "imageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/crypto-tile.png",
+                    "tallImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/crypto-tall.png",
+                    "bgImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/crypto-concept-bg-small.jpg",
+                    "isActive": false
+                },
+                "expiryDate": "2021-04-15T19:16:53.61445+00:00",
+                "stats": {
+                    "kills": {
+                        "rank": null,
+                        "percentile": 7,
+                        "displayName": "Kills",
+                        "displayCategory": "Combat",
+                        "category": null,
+                        "metadata": {},
+                        "value": 2,
+                        "displayValue": "2",
+                        "displayType": "Unspecified"
+                    },
+                    "passiveEnemiesScanned": {
+                        "rank": null,
+                        "percentile": 14,
+                        "displayName": "Passive Enemies Scanned",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 68,
+                        "displayValue": "68",
+                        "displayType": "Unspecified"
+                    },
+                    "ultimateShieldDamage": {
+                        "rank": null,
+                        "percentile": 10,
+                        "displayName": "Ultimate Shield Damage",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 859,
+                        "displayValue": "859",
+                        "displayType": "Unspecified"
+                    },
+                    "ultimateTrapsDestroyed": {
+                        "rank": null,
+                        "percentile": 28,
+                        "displayName": "Ultimate Traps Destroyed",
+                        "displayCategory": "Game",
+                        "category": null,
+                        "metadata": {},
+                        "value": 15,
+                        "displayValue": "15",
+                        "displayType": "Unspecified"
+                    }
+                }
+            },
+            {
+                "type": "legend",
+                "attributes": {
+                    "id": "legend_7"
+                },
+                "metadata": {
+                    "name": "Lifeline",
+                    "imageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/lifeline-tile.png",
+                    "tallImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/lifeline-tall.png",
+                    "bgImageUrl": "https://trackercdn.com/cdn/apex.tracker.gg/legends/lifeline-concept-bg-small.jpg",
+                    "isActive": false
+                },
+                "expiryDate": "2021-04-15T19:16:53.61445+00:00",
+                "stats": {
+                    "killsAsKillLeader": {
+                        "rank": null,
+                        "percentile": 19,
+                        "displayName": "Kills As Kill Leader",
+                        "displayCategory": "Combat",
+                        "category": null,
+                        "metadata": {},
+                        "value": 1,
+                        "displayValue": "1",
+                        "displayType": "Unspecified"
+                    }
+                }
+            }
+        ],
+        "availableSegments": [
+            {
+                "type": "legend",
+                "attributes": {},
+                "metadata": {}
+            }
+        ],
+        "expiryDate": "2021-04-15T19:16:53.61445+00:00"
+    }
+}

@@ -18,6 +18,8 @@ namespace GameDataApi.TrackerNetworkClient
         {
             this.httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("TRN-Api-Key", apiKey);
+            httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+            // httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip");
         }
 
     }
