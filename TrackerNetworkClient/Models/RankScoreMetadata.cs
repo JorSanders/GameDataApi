@@ -11,4 +11,10 @@ namespace GameDataApi.TrackerNetworkClient.Models
         [JsonProperty("rankName")]
         public string RankName { get; set; }
     }
+
+    public partial class RankScoreMetadata
+    {
+        [JsonProperty("rankScoreInfo")]
+        public RankScoreInfo RankScoreInfo { get; set; }
+    }
 }
