@@ -16,7 +16,7 @@ namespace GameDataApi.TrackerNetworkClient.Models
         public string PlatformUserIdentifier { get; set; }
 
         [JsonProperty("avatarUrl")]
-        public Uri AvatarUrl { get; set; }
+        public System.Uri AvatarUrl { get; set; }
 
         [JsonProperty("additionalParameters")]
         public object AdditionalParameters { get; set; }
