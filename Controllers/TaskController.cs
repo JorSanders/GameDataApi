@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using GameDataApi.TrackerNetworkClient;
+using GameDataApi.TrackerNetworkClient.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using QuickType;
 
 namespace GameDataApi.Controllers
 {
@@ -41,10 +41,17 @@ namespace GameDataApi.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<Object> ApexAccountAsync([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
+        public async Task<ProfileResponse> ApexProfileAsync([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
         {
-            ProfileResponse profileResponse = await trackerNetworkApexClient.Profile(platform, platformUserIdentifier);
-            return profileResponse;
+            return await trackerNetworkApexClient.Profile(platform, platformUserIdentifier);
+        }
+
+
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<ProfileSessionsResponse> ApexProfileSessionsAsync([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
+        {
+            return await trackerNetworkApexClient.ProfileSessions(platform, platformUserIdentifier);
         }
     }
 }
