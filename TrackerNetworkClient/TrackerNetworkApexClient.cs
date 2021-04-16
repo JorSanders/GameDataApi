@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using QuickType;
 
 namespace GameDataApi.TrackerNetworkClient
 {
@@ -21,11 +20,11 @@ namespace GameDataApi.TrackerNetworkClient
 
         }
 
-        public async Task<ProfileResponse> Profile(String Platform, String PlatformUserIdentifier)
+        public async Task<ProfileResponse> Profile(String platform, String platformUserIdentifier)
         {
-            var response = await httpClient.GetAsync("https://public-api.tracker.gg/v2/apex/standard/profile/origin/jormakker");
+            var response = await httpClient.GetAsync($"https://public-api.tracker.gg/v2/apex/standard/profile/{platform}/{platformUserIdentifier}");
+            string content = await response.Content.ReadAsStringAsync();
             response.EnsureSuccessStatusCode();
-            var content = await response.Content.ReadAsStringAsync();
             ProfileResponse result = JsonConvert.DeserializeObject<ProfileResponse>(content);
 
             return result;

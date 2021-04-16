@@ -1,11 +1,11 @@
 using System.Text.Json;
 using System.Threading.Tasks;
-using QuickType;
+using GameDataApi.TrackerNetworkClient.ProfileResponse;
 
 namespace GameDataApi.TrackerNetworkClient
 {
     public interface ITrackerNetworkApexClient
     {
-        Task<ProfileResponse> Profile(string Platform, string PlatformUserIdentifier);
+        Task<GameDataApi.TrackerNetworkClient.ProfileResponse.ProfileResponse> Profile(string Platform, string PlatformUserIdentifier);
     }
 }

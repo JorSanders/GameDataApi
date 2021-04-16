@@ -41,9 +41,10 @@ namespace GameDataApi.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<ProfileResponse> ApexAccountAsync()
+        public async Task<Object> ApexAccountAsync([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
         {
-            return await trackerNetworkApexClient.Profile("origin", "Jormakker");
+            ProfileResponse profileResponse = await trackerNetworkApexClient.Profile(platform, platformUserIdentifier);
+            return profileResponse;
         }
     }
 }
