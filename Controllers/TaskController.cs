@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using GameDataApi.TrackerNetworkClient;
+using GameDataApi.TrackerNetworkClient.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -39,9 +41,17 @@ namespace GameDataApi.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<string> ApexAccountAsync()
+        public async Task<ProfileResponse> ApexProfileAsync([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
         {
-            return await trackerNetworkApexClient.Profile("origin", "Jormakker");
+            return await trackerNetworkApexClient.Profile(platform, platformUserIdentifier);
+        }
+
+
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<ProfileSessionsResponse> ApexProfileSessionsAsync([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
+        {
+            return await trackerNetworkApexClient.ProfileSessions(platform, platformUserIdentifier);
         }
     }
 }
