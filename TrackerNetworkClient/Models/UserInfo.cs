@@ -1,8 +1,6 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-
-
     public partial class UserInfo
     {
         [JsonProperty("userId")]
@@ -38,5 +36,4 @@ namespace GameDataApi.TrackerNetworkClient.Models
         [JsonProperty("isSuspicious")]
         public object IsSuspicious { get; set; }
     }
-
 }

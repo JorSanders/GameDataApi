@@ -1,8 +1,6 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-
-
     public partial class Stat
     {
         [JsonProperty("rank")]

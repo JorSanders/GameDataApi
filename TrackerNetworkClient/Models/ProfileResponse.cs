@@ -1,8 +1,5 @@
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-    using System;
-    using System.Collections.Generic;
-
     using System.Globalization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -12,7 +9,6 @@ namespace GameDataApi.TrackerNetworkClient.Models
         [JsonProperty("data")]
         public ProfileResponseData Data { get; set; }
     }
-
 
     public partial class ProfileResponse
     {
