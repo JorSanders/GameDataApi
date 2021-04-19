@@ -1,12 +1,13 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-    public class IsActive
+    public class ProfileSegmentStats
     {
         [JsonProperty("value")]
-        public bool Value { get; set; }
+        public string[] Value { get; set; }
 
         [JsonProperty("displayValue")]
         public string DisplayValue { get; set; }
     }
+
 }

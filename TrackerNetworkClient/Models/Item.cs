@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-    public partial class Item
+    public class Session
     {
         [JsonProperty("metadata")]
         public ItemMetadata Metadata { get; set; }

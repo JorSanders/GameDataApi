@@ -1,9 +1,7 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-
-
-    public partial class Stat
+    public class Stat
     {
         [JsonProperty("rank")]
         public long? Rank { get; set; }

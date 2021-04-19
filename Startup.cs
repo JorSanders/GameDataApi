@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GameDataApi.Mappers;
 using GameDataApi.TrackerNetworkClient;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,8 @@ namespace GameDataApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameDataApi", Version = "v1" });
             });
+
+            services.AddTransient<IApexMapper>(s => new ApexMapper());
 
             services.AddTransient<ITrackerNetworkApexClient>(s => new TrackerNetworkApexClient(Configuration["TrackerNetwork:ApiKey"]));
         }

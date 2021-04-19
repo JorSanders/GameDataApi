@@ -1,17 +1,16 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-
-    public partial class ItemMetadata
+    public class ItemMetadata
     {
         [JsonProperty("startDate")]
-        public Duration StartDate { get; set; }
+        public MetaDataValue StartDate { get; set; }
 
         [JsonProperty("endDate")]
-        public Duration EndDate { get; set; }
+        public MetaDataValue EndDate { get; set; }
 
         [JsonProperty("duration")]
-        public Duration Duration { get; set; }
+        public MetaDataValue Duration { get; set; }
 
         [JsonProperty("isActive")]
         public IsActive IsActive { get; set; }

@@ -2,9 +2,7 @@ using System;
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-
-
-    public partial class ProfileSegmentMetadata
+    public class ProfileSegmentMetadata
     {
         [JsonProperty("name")]
         public string Name { get; set; }

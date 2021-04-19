@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
 
-    public partial class RankScore
+    public class RankScore
     {
         [JsonProperty("rank")]
         public object Rank { get; set; }

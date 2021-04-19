@@ -1,8 +1,7 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-
-    public partial class DataMetadata
+    public class DataMetadata
     {
         [JsonProperty("currentSeason")]
         public long CurrentSeason { get; set; }
