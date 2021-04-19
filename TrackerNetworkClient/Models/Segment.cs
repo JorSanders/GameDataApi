@@ -2,21 +2,21 @@ using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
 
-    public partial class Segment
+    public partial class ProfileSegment
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("attributes")]
-        public SegmentAttributes Attributes { get; set; }
+        public ProfileSegmentAttributes Attributes { get; set; }
 
         [JsonProperty("metadata")]
-        public SegmentMetadata Metadata { get; set; }
+        public ProfileSegmentMetadata Metadata { get; set; }
 
         [JsonProperty("expiryDate")]
         public string ExpiryDate { get; set; }
 
         [JsonProperty("stats")]
-        public Stats Stats { get; set; }
+        public ProfileSegmentStats Stats { get; set; }
     }
 }

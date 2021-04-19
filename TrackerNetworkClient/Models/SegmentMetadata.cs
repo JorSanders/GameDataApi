@@ -4,7 +4,7 @@ namespace GameDataApi.TrackerNetworkClient.Models
 {
 
 
-    public partial class SegmentMetadata
+    public partial class ProfileSegmentMetadata
     {
         [JsonProperty("name")]
         public string Name { get; set; }

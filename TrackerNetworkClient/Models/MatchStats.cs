@@ -4,39 +4,48 @@ namespace GameDataApi.TrackerNetworkClient.Models
     public partial class MatchStats
     {
         [JsonProperty("level")]
-        public RankScore Level { get; set; }
+        public MatchStat Level { get; set; }
 
-        [JsonProperty("specific2", NullValueHandling = NullValueHandling.Ignore)]
-        public RankScore Specific2 { get; set; }
+        [JsonProperty("kills", NullValueHandling = NullValueHandling.Ignore)]
+        public MatchStat Kills { get; set; }
 
-        [JsonProperty("specific3", NullValueHandling = NullValueHandling.Ignore)]
-        public RankScore Specific3 { get; set; }
+        [JsonProperty("headshots", NullValueHandling = NullValueHandling.Ignore)]
+        public MatchStat Headshots { get; set; }
 
         [JsonProperty("rankScore")]
-        public StatsRankScore RankScore { get; set; }
+        public RankScore RankScore { get; set; }
 
         [JsonProperty("rankScoreChange")]
-        public RankScore RankScoreChange { get; set; }
+        public MatchStat RankScoreChange { get; set; }
+
+        [JsonProperty("damage", NullValueHandling = NullValueHandling.Ignore)]
+        public MatchStat Damage { get; set; }
+
+        [JsonProperty("specific2", NullValueHandling = NullValueHandling.Ignore)]
+        public MatchStat Specific2 { get; set; }
 
         [JsonProperty("eyeEnemiesScanned", NullValueHandling = NullValueHandling.Ignore)]
-        public RankScore EyeEnemiesScanned { get; set; }
+        public MatchStat EyeEnemiesScanned { get; set; }
+
+        [JsonProperty("specific3", NullValueHandling = NullValueHandling.Ignore)]
+        public MatchStat Specific3 { get; set; }
 
         [JsonProperty("eyeTrapsScanned", NullValueHandling = NullValueHandling.Ignore)]
-        public RankScore EyeTrapsScanned { get; set; }
+        public MatchStat EyeTrapsScanned { get; set; }
 
         [JsonProperty("smokeGrenadeEnemiesHit", NullValueHandling = NullValueHandling.Ignore)]
-        public RankScore SmokeGrenadeEnemiesHit { get; set; }
+        public MatchStat SmokeGrenadeEnemiesHit { get; set; }
 
         [JsonProperty("revives", NullValueHandling = NullValueHandling.Ignore)]
-        public RankScore Revives { get; set; }
+        public MatchStat Revives { get; set; }
 
         [JsonProperty("domeDamageBlocked", NullValueHandling = NullValueHandling.Ignore)]
-        public RankScore DomeDamageBlocked { get; set; }
+        public MatchStat DomeDamageBlocked { get; set; }
 
         [JsonProperty("specific1", NullValueHandling = NullValueHandling.Ignore)]
-        public RankScore Specific1 { get; set; }
+        public MatchStat Specific1 { get; set; }
 
         [JsonProperty("riftsSquadmatesPhased", NullValueHandling = NullValueHandling.Ignore)]
-        public RankScore RiftsSquadmatesPhased { get; set; }
+        public MatchStat RiftsSquadmatesPhased { get; set; }
     }
 }
