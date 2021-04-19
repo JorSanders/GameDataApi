@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-    public partial class UserInfo
+    public class UserInfo
     {
         [JsonProperty("userId")]
         public object UserId { get; set; }

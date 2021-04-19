@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-    public partial class SocialAccount
+    public class SocialAccount
     {
         [JsonProperty("platformSlug")]
         public string PlatformSlug { get; set; }

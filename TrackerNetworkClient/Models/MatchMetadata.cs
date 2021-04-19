@@ -1,19 +1,19 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-    public partial class MatchMetadata
+    public class MatchMetadata
     {
         [JsonProperty("result")]
-        public Duration Result { get; set; }
+        public MetaDataValue Result { get; set; }
 
         [JsonProperty("endDate")]
-        public Duration EndDate { get; set; }
+        public MetaDataValue EndDate { get; set; }
 
         [JsonProperty("character")]
         public Character Character { get; set; }
 
         [JsonProperty("characterIconUrl")]
-        public Duration CharacterIconUrl { get; set; }
+        public MetaDataValue CharacterIconUrl { get; set; }
 
         [JsonProperty("characterStats")]
         public Stats CharacterStats { get; set; }
@@ -22,7 +22,7 @@ namespace GameDataApi.TrackerNetworkClient.Models
         public Character Legend { get; set; }
 
         [JsonProperty("legendBigImageUrl")]
-        public Duration LegendBigImageUrl { get; set; }
+        public MetaDataValue LegendBigImageUrl { get; set; }
 
         [JsonProperty("legendStats")]
         public Stats LegendStats { get; set; }

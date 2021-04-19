@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-    public partial class IsActive
+    public class IsActive
     {
         [JsonProperty("value")]
         public bool Value { get; set; }

@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
 
-    public partial class ProfileResponseData
+    public class ProfileResponseData
     {
         [JsonProperty("platformInfo")]
         public PlatformInfo PlatformInfo { get; set; }

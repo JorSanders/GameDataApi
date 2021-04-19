@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-    public partial class Match
+    public class Match
     {
         [JsonProperty("id")]
         public string Id { get; set; }
