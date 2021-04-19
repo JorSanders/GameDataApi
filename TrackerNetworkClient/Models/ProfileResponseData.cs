@@ -14,7 +14,7 @@ namespace GameDataApi.TrackerNetworkClient.Models
         public DataMetadata Metadata { get; set; }
 
         [JsonProperty("segments")]
-        public Segment[] Segments { get; set; }
+        public ProfileSegment[] Segments { get; set; }
 
         [JsonProperty("availableSegments")]
         public AvailableSegment[] AvailableSegments { get; set; }

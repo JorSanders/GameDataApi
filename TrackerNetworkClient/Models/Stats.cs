@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace GameDataApi.TrackerNetworkClient.Models
 {
-    public partial class Stats
+    public partial class ProfileSegmentStats
     {
         [JsonProperty("value")]
         public string[] Value { get; set; }
@@ -11,43 +11,49 @@ namespace GameDataApi.TrackerNetworkClient.Models
     }
     public partial class Stats
     {
+        [JsonProperty("value")]
+        public string[] Value { get; set; }
+
+        [JsonProperty("displayValue")]
+        public string DisplayValue { get; set; }
+
         [JsonProperty("level", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills Level { get; set; }
+        public Stat Level { get; set; }
 
         [JsonProperty("kills")]
-        public BeastOfTheHuntKills Kills { get; set; }
+        public Stat Kills { get; set; }
 
         [JsonProperty("killsPerMatch", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills KillsPerMatch { get; set; }
+        public Stat KillsPerMatch { get; set; }
 
         [JsonProperty("winningKills", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills WinningKills { get; set; }
+        public Stat WinningKills { get; set; }
 
         [JsonProperty("killsAsKillLeader", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills KillsAsKillLeader { get; set; }
+        public Stat KillsAsKillLeader { get; set; }
 
         [JsonProperty("damage", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills Damage { get; set; }
+        public Stat Damage { get; set; }
 
         [JsonProperty("matchesPlayed", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills MatchesPlayed { get; set; }
+        public Stat MatchesPlayed { get; set; }
 
         [JsonProperty("revives", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills Revives { get; set; }
+        public Stat Revives { get; set; }
 
         [JsonProperty("sniperKills", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills SniperKills { get; set; }
+        public Stat SniperKills { get; set; }
 
         [JsonProperty("rankScore", NullValueHandling = NullValueHandling.Ignore)]
         public RankScore RankScore { get; set; }
 
         [JsonProperty("beastOfTheHuntKills", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills BeastOfTheHuntKills { get; set; }
+        public Stat BeastOfTheHuntKills { get; set; }
 
         [JsonProperty("grappleTravelDistance", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills GrappleTravelDistance { get; set; }
+        public Stat GrappleTravelDistance { get; set; }
 
         [JsonProperty("voicesWarningsHeard", NullValueHandling = NullValueHandling.Ignore)]
-        public BeastOfTheHuntKills VoicesWarningsHeard { get; set; }
+        public Stat VoicesWarningsHeard { get; set; }
     }
 }

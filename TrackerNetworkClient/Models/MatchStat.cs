@@ -1,15 +1,15 @@
 using Newtonsoft.Json;
+
 namespace GameDataApi.TrackerNetworkClient.Models
 {
 
-
-    public partial class Stat
+    public partial class MatchStat
     {
         [JsonProperty("rank")]
-        public long? Rank { get; set; }
+        public object Rank { get; set; }
 
         [JsonProperty("percentile")]
-        public double Percentile { get; set; }
+        public object Percentile { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -18,13 +18,13 @@ namespace GameDataApi.TrackerNetworkClient.Models
         public string DisplayCategory { get; set; }
 
         [JsonProperty("category")]
-        public object Category { get; set; }
+        public string Category { get; set; }
 
         [JsonProperty("metadata")]
         public MetadataClass Metadata { get; set; }
 
         [JsonProperty("value")]
-        public double Value { get; set; }
+        public long Value { get; set; }
 
         [JsonProperty("displayValue")]
         public string DisplayValue { get; set; }
