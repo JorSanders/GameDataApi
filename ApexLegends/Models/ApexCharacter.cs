@@ -1,12 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Jorkol.GameDataApi.ApexLegends
+namespace Jorkol.GameDataApi.ApexLegends.Models
 {
     public class ApexCharacter
     {
         [Key]
-        public Guid Id { get; set; }
         public long ApexId { get; set; }
         public string Name { get; set; }
     }

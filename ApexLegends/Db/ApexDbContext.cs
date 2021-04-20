@@ -1,7 +1,8 @@
 using System.Reflection;
+using Jorkol.GameDataApi.ApexLegends.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Jorkol.GameDataApi.ApexLegends
+namespace Jorkol.GameDataApi.ApexLegends.Db
 {
 
     public class ApexDbContext : DbContext

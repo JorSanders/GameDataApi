@@ -1,4 +1,6 @@
-using Jorkol.GameDataApi.ApexLegends;
+using Jorkol.GameDataApi.ApexLegends.Mappers;
+using Jorkol.GameDataApi.ApexLegends.Repositories;
+using Jorkol.GameDataApi.ApexLegends.Services;
 using Jorkol.GameDataApi.TrackerNetworkClient;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,9 +33,12 @@ namespace Jorkol.GameDataApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameDataApi", Version = "v1" });
             });
 
-            services.AddTransient<IApexMapper>(s => new ApexMapper());
-
             services.AddTransient<ITrackerNetworkApexClient>(s => new TrackerNetworkApexClient(Configuration["TrackerNetwork:ApiKey"]));
+
+            services.AddScoped<IApexMatchRepository, ApexMatchRepository>();
+            services.AddScoped<IApexCharacterRepository, ApexCharacterRepository>();
+            services.AddScoped<IApexMatchService, ApexMatchService>();
+            services.AddScoped<IApexMapper, ApexMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

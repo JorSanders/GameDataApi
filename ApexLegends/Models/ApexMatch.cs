@@ -1,12 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Jorkol.GameDataApi.ApexLegends
+namespace Jorkol.GameDataApi.ApexLegends.Models
 {
     public class ApexMatch
     {
         [Key]
-        public Guid Id { get; set; }
         public Guid ApexMatchId { get; set; }
         public DateTime EndDateTime { get; set; }
         public ApexCharacter Character { get; set; }

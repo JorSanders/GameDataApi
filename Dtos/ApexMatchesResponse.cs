@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using Jorkol.GameDataApi.ApexLegends;
+using Jorkol.GameDataApi.ApexLegends.Models;
 
 namespace Jorkol.GameDataApi.Dtos
 {
     public class ApexMatchesResponse
     {
         public long total { get; set; }
-        public List<ApexMatch> apexMatches { get; set; }
+        public IEnumerable<ApexMatch> apexMatches { get; set; }
     }
 }

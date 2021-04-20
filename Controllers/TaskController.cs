@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using Jorkol.GameDataApi.ApexLegends;
+using Jorkol.GameDataApi.ApexLegends.Services;
 using Jorkol.GameDataApi.Dtos;
-using Jorkol.GameDataApi.TrackerNetworkClient;
-using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -15,15 +13,12 @@ namespace Jorkol.GameDataApi.Controllers
     public class TaskController : ControllerBase
     {
         private readonly ILogger<TaskController> logger;
-        private readonly ITrackerNetworkApexClient trackerNetworkApexClient;
+        private readonly IApexMatchService apexMatchService;
 
-        private readonly IApexMapper apexMapper;
-
-        public TaskController(ILogger<TaskController> logger, ITrackerNetworkApexClient trackerNetworkApexClient, IApexMapper apexMapper)
+        public TaskController(ILogger<TaskController> logger, IApexMatchService apexMatchService)
         {
             this.logger = logger;
-            this.trackerNetworkApexClient = trackerNetworkApexClient;
-            this.apexMapper = apexMapper;
+            this.apexMatchService = apexMatchService;
         }
 
         [HttpGet]
@@ -35,33 +30,10 @@ namespace Jorkol.GameDataApi.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<ProfileResponseData> ApexProfileAsync([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
-        {
-            return await trackerNetworkApexClient.Profile(platform, platformUserIdentifier);
-        }
-
-
-        [HttpGet]
-        [Route("[action]")]
-        public async Task<ProfileSessionsResponseData> ApexProfileSessionsAsync([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
-        {
-            return await trackerNetworkApexClient.ProfileSessions(platform, platformUserIdentifier);
-        }
-
-        [HttpGet]
-        [Route("[action]")]
         public async Task<ApexMatchesResponse> ApexMatches([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
         {
-            ProfileSessionsResponseData profileSessionsResponse = await trackerNetworkApexClient.ProfileSessions(platform, platformUserIdentifier);
-            List<ApexMatch> apexMatchList = this.apexMapper.ApexMatchListFromProfileSessions(profileSessionsResponse);
-
-            using (var apexDbContext = new ApexDbContext())
-            {
-                apexDbContext.ApexMatches.AddRange(apexMatchList);
-                apexDbContext.SaveChanges();
-            }
-
-            return new ApexMatchesResponse { total = apexMatchList.Count, apexMatches = apexMatchList };
+            var apexMatches = await this.apexMatchService.ApexMatchesAsync(platform, platformUserIdentifier);
+            return new ApexMatchesResponse { total = apexMatches.Count(), apexMatches = apexMatches };
         }
     }
 }

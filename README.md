@@ -8,6 +8,17 @@ Add the api secret to your user secrets
 dotnet user-secrets set "TrackerNetwork:ApiKey" "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
+Run migrations
+```shell
+dotnet ef database update
+```
+
+# Developmnet
+add migration
+```shell
+dotnet ef migrations add MyFirstMigration
+```
+
 ## Run
 ```shell
 dotnet run

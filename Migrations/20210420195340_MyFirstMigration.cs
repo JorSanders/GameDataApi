@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using MySql.EntityFrameworkCore.Metadata;
 
 namespace GameDataApi.Migrations
 {
@@ -11,23 +12,22 @@ namespace GameDataApi.Migrations
                 name: "ApexCharacter",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(type: "varbinary(16)", nullable: false),
-                    ApexId = table.Column<long>(type: "bigint", nullable: false),
+                    ApexId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApexCharacter", x => x.Id);
+                    table.PrimaryKey("PK_ApexCharacter", x => x.ApexId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "ApexMatches",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(type: "varbinary(16)", nullable: false),
                     ApexMatchId = table.Column<byte[]>(type: "varbinary(16)", nullable: false),
                     EndDateTime = table.Column<DateTime>(type: "datetime", nullable: false),
-                    CharacterId = table.Column<byte[]>(type: "varbinary(16)", nullable: true),
+                    CharacterApexId = table.Column<long>(type: "bigint", nullable: true),
                     PlayerLevel = table.Column<long>(type: "bigint", nullable: true),
                     Kills = table.Column<long>(type: "bigint", nullable: true),
                     Damage = table.Column<long>(type: "bigint", nullable: true),
@@ -42,19 +42,19 @@ namespace GameDataApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApexMatches", x => x.Id);
+                    table.PrimaryKey("PK_ApexMatches", x => x.ApexMatchId);
                     table.ForeignKey(
-                        name: "FK_ApexMatches_ApexCharacter_CharacterId",
-                        column: x => x.CharacterId,
+                        name: "FK_ApexMatches_ApexCharacter_CharacterApexId",
+                        column: x => x.CharacterApexId,
                         principalTable: "ApexCharacter",
-                        principalColumn: "Id",
+                        principalColumn: "ApexId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApexMatches_CharacterId",
+                name: "IX_ApexMatches_CharacterApexId",
                 table: "ApexMatches",
-                column: "CharacterId");
+                column: "CharacterApexId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

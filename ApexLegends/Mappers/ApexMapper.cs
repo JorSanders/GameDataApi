@@ -1,25 +1,34 @@
 using System;
 using System.Collections.Generic;
+using Jorkol.GameDataApi.ApexLegends.Models;
+using Jorkol.GameDataApi.ApexLegends.Repositories;
 using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 
-namespace Jorkol.GameDataApi.ApexLegends
+namespace Jorkol.GameDataApi.ApexLegends.Mappers
 {
     public class ApexMapper : IApexMapper
     {
-        public List<ApexMatch> ApexMatchListFromProfileSessions(ProfileSessionsResponseData profileSessionsResponseData)
+        private readonly IApexCharacterRepository apexCharacterRepository;
+
+        public ApexMapper(IApexCharacterRepository apexCharacterRepository)
+        {
+            this.apexCharacterRepository = apexCharacterRepository;
+        }
+
+        public IEnumerable<ApexMatch> ApexMatchesFromProfileSessions(ProfileSessionsResponseData profileSessionsResponseData)
         {
             List<ApexMatch> ApexMatchList = new List<ApexMatch>();
 
 
             foreach (Session session in profileSessionsResponseData.Items)
             {
-                ApexMatchList.AddRange(ApexMatchListFromSession(session));
+                ApexMatchList.AddRange(ApexMatchesFromSession(session));
             }
 
             return ApexMatchList;
         }
 
-        public List<ApexMatch> ApexMatchListFromSession(Session session)
+        public IEnumerable<ApexMatch> ApexMatchesFromSession(Session session)
         {
             List<ApexMatch> apexMatchList = new List<ApexMatch>();
 
@@ -29,7 +38,7 @@ namespace Jorkol.GameDataApi.ApexLegends
 
                 apexMatch.ApexMatchId = Guid.Parse(match?.Id);
                 apexMatch.EndDateTime = DateTime.Parse(match?.Metadata?.EndDate?.Value);
-                apexMatch.Character = ApexCharacterFromCharacter(match?.Metadata?.Character);
+                apexMatch.Character = this.ApexCharacterFromCharacter(match?.Metadata?.Character);
                 apexMatch.PlayerLevel = match.Stats?.Level?.Value;
                 apexMatch.Kills = match.Stats?.Kills?.Value;
                 apexMatch.Damage = match.Stats?.Damage?.Value;
@@ -50,7 +59,8 @@ namespace Jorkol.GameDataApi.ApexLegends
 
         public ApexCharacter ApexCharacterFromCharacter(Character character)
         {
-            return new ApexCharacter { ApexId = character.Value, Name = character.DisplayValue };
+            ApexCharacter apexCharacter = new ApexCharacter { ApexId = character.Value, Name = character.DisplayValue };
+            return apexCharacterRepository.CreateOrUpdate(apexCharacter);
         }
     }
 }
