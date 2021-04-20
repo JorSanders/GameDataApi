@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>0f8efc1b-3e3d-49a1-a8c1-7fc0d5b8e91a</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-    <PackageReference Include="System.Text.Json" Version="5.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2"/>
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.0+m8.0.23"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3"/>
+    <PackageReference Include="System.Text.Json" Version="5.0.2"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5"/>
   </ItemGroup>
-
 </Project>

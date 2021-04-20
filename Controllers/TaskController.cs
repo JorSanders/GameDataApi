@@ -54,6 +54,13 @@ namespace Jorkol.GameDataApi.Controllers
         {
             ProfileSessionsResponseData profileSessionsResponse = await trackerNetworkApexClient.ProfileSessions(platform, platformUserIdentifier);
             List<ApexMatch> apexMatchList = this.apexMapper.ApexMatchListFromProfileSessions(profileSessionsResponse);
+
+            using (var apexDbContext = new ApexDbContext())
+            {
+                apexDbContext.ApexMatches.AddRange(apexMatchList);
+                apexDbContext.SaveChanges();
+            }
+
             return new ApexMatchesResponse { total = apexMatchList.Count, apexMatches = apexMatchList };
         }
     }
