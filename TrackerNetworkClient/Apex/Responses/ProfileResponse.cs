@@ -1,6 +1,7 @@
-namespace GameDataApi.TrackerNetworkClient.Models
+namespace GameDataApi.TrackerNetworkClient.Responses
 {
     using System.Globalization;
+    using GameDataApi.TrackerNetworkClient.Models;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 

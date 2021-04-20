@@ -37,4 +37,4 @@ msbuild.wrn
 .vs/
 
 # Don't include JSON files used to create models
-*/Models/*.json
+TrackerNetworkClient/**/*Response.json

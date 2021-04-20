@@ -1,10 +1,11 @@
+using System;
 using Newtonsoft.Json;
 namespace GameDataApi.Models
 {
     public class ApexMatch
     {
-        public string ApexMatchId { get; set; }
-        public string EndDateTime { get; set; }
+        public Guid ApexMatchId { get; set; }
+        public DateTime EndDateTime { get; set; }
         public ApexCharacter Character { get; set; }
         public long? PlayerLevel { get; set; }
         public long? Kills { get; set; }

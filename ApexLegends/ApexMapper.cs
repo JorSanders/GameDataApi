@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using GameDataApi.Models;
@@ -28,8 +29,8 @@ namespace GameDataApi.Mappers
             {
                 ApexMatch apexMatch = new ApexMatch();
 
-                apexMatch.ApexMatchId = match?.Id;
-                apexMatch.EndDateTime = match?.Metadata?.EndDate?.Value;
+                apexMatch.ApexMatchId = Guid.Parse(match?.Id);
+                apexMatch.EndDateTime = DateTime.Parse(match?.Metadata?.EndDate?.Value);
                 apexMatch.Character = ApexCharacterFromCharacter(match?.Metadata?.Character);
                 apexMatch.PlayerLevel = match.Stats?.Level?.Value;
                 apexMatch.Kills = match.Stats?.Kills?.Value;
