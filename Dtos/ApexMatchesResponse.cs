@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using Jorkol.GameDataApi.Models;
-using Newtonsoft.Json;
+using Jorkol.GameDataApi.ApexLegends;
 
-namespace GameDataApi.Dtos
+namespace Jorkol.GameDataApi.Dtos
 {
     public class ApexMatchesResponse
     {

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Jorkol.GameDataApi.Mappers;
-using Jorkol.GameDataApi.Models;
+using Jorkol.GameDataApi.ApexLegends;
+using Jorkol.GameDataApi.Dtos;
 using Jorkol.GameDataApi.TrackerNetworkClient;
 using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 using Microsoft.AspNetCore.Mvc;

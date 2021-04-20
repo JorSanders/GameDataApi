@@ -1,6 +1,6 @@
 using System;
-using Newtonsoft.Json;
-namespace Jorkol.GameDataApi.Models
+
+namespace Jorkol.GameDataApi.ApexLegends
 {
     public class ApexMatch
     {

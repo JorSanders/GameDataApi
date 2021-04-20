@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using System.Reflection;
-using Jorkol.GameDataApi.Models;
 using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 
-namespace Jorkol.GameDataApi.Mappers
+namespace Jorkol.GameDataApi.ApexLegends
 {
     public interface IApexMapper
     {
