@@ -1,4 +1,4 @@
-namespace GameDataApi.TrackerNetworkClient
+namespace Jorkol.GameDataApi.TrackerNetworkClient
 {
     public interface ITrackerNetworkBaseClient
     {

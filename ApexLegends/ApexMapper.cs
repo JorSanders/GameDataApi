@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using GameDataApi.Models;
-using GameDataApi.TrackerNetworkClient.Models;
+using Jorkol.GameDataApi.Models;
+using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 
-namespace GameDataApi.Mappers
+namespace Jorkol.GameDataApi.Mappers
 {
     public class ApexMapper : IApexMapper
     {

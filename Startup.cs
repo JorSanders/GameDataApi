@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GameDataApi.Mappers;
-using GameDataApi.TrackerNetworkClient;
+using Jorkol.GameDataApi.Mappers;
+using Jorkol.GameDataApi.TrackerNetworkClient;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,7 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace GameDataApi
+namespace Jorkol.GameDataApi
 {
     public class Startup
     {

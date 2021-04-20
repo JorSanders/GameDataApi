@@ -1,10 +1,10 @@
-namespace GameDataApi.TrackerNetworkClient.Responses
+namespace Jorkol.GameDataApi.TrackerNetworkClient.Responses
 {
     using System;
     using System.Collections.Generic;
 
     using System.Globalization;
-    using GameDataApi.TrackerNetworkClient.Models;
+    using Jorkol.GameDataApi.TrackerNetworkClient.Models;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 

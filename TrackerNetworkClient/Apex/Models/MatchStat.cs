@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace GameDataApi.TrackerNetworkClient.Models
+namespace Jorkol.GameDataApi.TrackerNetworkClient.Models
 {
     public class MatchStat
     {

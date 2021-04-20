@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GameDataApi.Dtos;
-using GameDataApi.Mappers;
-using GameDataApi.Models;
-using GameDataApi.TrackerNetworkClient;
-using GameDataApi.TrackerNetworkClient.Models;
+using Jorkol.GameDataApi.Mappers;
+using Jorkol.GameDataApi.Models;
+using Jorkol.GameDataApi.TrackerNetworkClient;
+using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace GameDataApi.Controllers
+namespace Jorkol.GameDataApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

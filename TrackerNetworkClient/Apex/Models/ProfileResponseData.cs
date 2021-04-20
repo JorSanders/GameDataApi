@@ -1,6 +1,6 @@
-using GameDataApi.TrackerNetworkClient.Models;
+using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 using Newtonsoft.Json;
-namespace GameDataApi.TrackerNetworkClient.Models
+namespace Jorkol.GameDataApi.TrackerNetworkClient.Models
 {
 
     public class ProfileResponseData

@@ -1,8 +1,8 @@
 using System.Text.Json;
 using System.Threading.Tasks;
-using GameDataApi.TrackerNetworkClient.Models;
+using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 
-namespace GameDataApi.TrackerNetworkClient
+namespace Jorkol.GameDataApi.TrackerNetworkClient
 {
     public interface ITrackerNetworkApexClient
     {

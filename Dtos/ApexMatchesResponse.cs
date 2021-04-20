@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using GameDataApi.Models;
+using Jorkol.GameDataApi.Models;
 using Newtonsoft.Json;
 
 namespace GameDataApi.Dtos

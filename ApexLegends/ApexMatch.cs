@@ -1,6 +1,6 @@
 using System;
 using Newtonsoft.Json;
-namespace GameDataApi.Models
+namespace Jorkol.GameDataApi.Models
 {
     public class ApexMatch
     {

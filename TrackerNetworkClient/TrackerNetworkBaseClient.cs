@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace GameDataApi.TrackerNetworkClient
+namespace Jorkol.GameDataApi.TrackerNetworkClient
 {
     public abstract class TrackerNetworkBaseClient : ITrackerNetworkBaseClient
     {

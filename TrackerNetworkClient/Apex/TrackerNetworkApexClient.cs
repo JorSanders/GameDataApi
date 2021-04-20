@@ -5,15 +5,15 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using GameDataApi.TrackerNetworkClient.Models;
-using GameDataApi.TrackerNetworkClient.Responses;
+using Jorkol.GameDataApi.TrackerNetworkClient.Models;
+using Jorkol.GameDataApi.TrackerNetworkClient.Responses;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace GameDataApi.TrackerNetworkClient
+namespace Jorkol.GameDataApi.TrackerNetworkClient
 {
     public class TrackerNetworkApexClient : TrackerNetworkBaseClient, ITrackerNetworkApexClient
     {
