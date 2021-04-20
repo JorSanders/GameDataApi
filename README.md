@@ -13,7 +13,7 @@ Run migrations
 dotnet ef database update
 ```
 
-# Developmnet
+## Development
 add migration
 ```shell
 dotnet ef migrations add MyFirstMigration
