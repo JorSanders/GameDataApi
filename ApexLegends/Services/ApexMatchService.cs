@@ -48,8 +48,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
         public IEnumerable<ApexMatch> ApexMatchesFromDb(ApexAccount account)
         {
             account = apexAccountRepository.CreateOrUpdate(account);
-            var matchList = this.apexMatchRepository.FindByAccount(account);
-            return matchList;
+            return this.apexMatchRepository.FindByAccount(account);
         }
 
         public async Task<IEnumerable<ApexMatch>> ApexMatchesFromTrnAsync(ApexAccount account)

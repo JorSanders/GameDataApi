@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Debug;
 using Microsoft.OpenApi.Models;
 
 namespace Jorkol.GameDataApi
@@ -39,6 +40,9 @@ namespace Jorkol.GameDataApi
 
             services.AddDbContext<ApexDbContext>(options =>
                 options.UseMySQL(Configuration["ConnectionString:GameApiDb"])
+            // .UseLoggerFactory(new LoggerFactory(new[] {
+            // new DebugLoggerProvider()}))
+            // .EnableSensitiveDataLogging()
             );
 
             services.AddScoped<IApexMatchRepository, ApexMatchRepository>();
