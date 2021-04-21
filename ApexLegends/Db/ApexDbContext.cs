@@ -19,10 +19,5 @@ namespace Jorkol.GameDataApi.ApexLegends.Db
         {
             this.logger = logger;
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseLoggerFactory(loggerFactory);
-        }
     }
 }
