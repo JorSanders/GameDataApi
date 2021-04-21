@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Jorkol.GameDataApi.ApexLegends.Models
 {
-    public class ApexCharacter : ApexBaseModel
+    public class ApexAccount : ApexBaseModel
     {
-        [Key]
-        public long ApexId { get; set; }
+        public string Platform { get; set; }
         public string Name { get; set; }
+
     }
 }

@@ -5,7 +5,7 @@ using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 
 namespace Jorkol.GameDataApi.ApexLegends.Repositories
 {
-    public interface IApexMatchRepository : IApexBaseRepository<ApexMatch>
+    public interface IApexAccountRepository : IApexBaseRepository<ApexAccount>
     {
     }
 }

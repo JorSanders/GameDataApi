@@ -5,8 +5,7 @@ using Jorkol.GameDataApi.TrackerNetworkClient.Models;
 
 namespace Jorkol.GameDataApi.ApexLegends.Repositories
 {
-    public interface IApexCharacterRepository
+    public interface IApexCharacterRepository : IApexBaseRepository<ApexCharacter>
     {
-        ApexCharacter CreateOrUpdate(ApexCharacter apexCharacter);
     }
 }

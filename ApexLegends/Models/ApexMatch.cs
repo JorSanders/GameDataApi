@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Jorkol.GameDataApi.ApexLegends.Models
 {
-    public class ApexMatch
+    public class ApexMatch : ApexBaseModel
     {
         [Key]
         public Guid ApexMatchId { get; set; }

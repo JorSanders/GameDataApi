@@ -7,9 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Jorkol.GameDataApi.ApexLegends.Repositories
 {
-    public class ApexCharacterRepository : ApexBaseRepository<ApexCharacter>, IApexCharacterRepository
+    public class ApexAccountRepository : ApexBaseRepository<ApexAccount>, IApexAccountRepository
     {
-        public ApexCharacterRepository(ApexDbContext apexDbContext) : base(apexDbContext)
+        public ApexAccountRepository(ApexDbContext apexDbContext) : base(apexDbContext)
         {
         }
     }

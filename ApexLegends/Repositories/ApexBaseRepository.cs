@@ -3,19 +3,56 @@ using System.Linq;
 
 using Jorkol.GameDataApi.ApexLegends.Db;
 using Jorkol.GameDataApi.ApexLegends.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Jorkol.GameDataApi.ApexLegends.Repositories
 {
-    public abstract class ApexBaseRepository : IApexBaseRepository
+    public abstract class ApexBaseRepository<T> : IApexBaseRepository<T> where T : ApexBaseModel
     {
-        protected readonly ILogger<ApexBaseRepository> logger;
         protected readonly ApexDbContext apexDbContext;
 
-        protected ApexBaseRepository(ILogger<ApexBaseRepository> logger, ApexDbContext apexDbContext)
+        protected object Model;
+
+        public ApexBaseRepository(ApexDbContext apexDbContext)
         {
-            this.logger = logger;
             this.apexDbContext = apexDbContext;
+        }
+
+        protected DbSet<T> DbSet()
+        {
+            return apexDbContext.Set<T>();
+        }
+
+        public IEnumerable<T> All()
+        {
+            return DbSet();
+        }
+
+        public T CreateOrUpdate(T item, bool save = true)
+        {
+            T result = DbSet().Find(item);
+            if (result == null)
+            {
+                result = DbSet().Add(item).Entity;
+            }
+            else
+            {
+                result = DbSet().Update(result).Entity;
+            }
+
+            if (save)
+            {
+                int savedItems = apexDbContext.SaveChanges();
+            }
+            return result;
+        }
+
+        public IEnumerable<T> CreateOrUpdate(IEnumerable<T> items)
+        {
+            items.ToList().ForEach(item => CreateOrUpdate(item, false));
+            int savedItems = apexDbContext.SaveChanges();
+            return items;
         }
     }
 }

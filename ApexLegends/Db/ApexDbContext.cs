@@ -10,6 +10,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Db
     {
         public DbSet<ApexMatch> ApexMatches { get; set; }
         public DbSet<ApexCharacter> ApexCharacter { get; set; }
+        public DbSet<ApexAccount> ApexAccount { get; set; }
 
         public ApexDbContext(DbContextOptions<ApexDbContext> options) : base(options)
         {
