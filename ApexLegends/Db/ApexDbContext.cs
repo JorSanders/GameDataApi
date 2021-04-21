@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Reflection;
 using Jorkol.GameDataApi.ApexLegends.Models;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +10,9 @@ namespace Jorkol.GameDataApi.ApexLegends.Db
     {
         public DbSet<ApexMatch> ApexMatches { get; set; }
         public DbSet<ApexCharacter> ApexCharacter { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public ApexDbContext(DbContextOptions<ApexDbContext> options) : base(options)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=dbname;user=dbuser;password=dbpass");
         }
     }
 }

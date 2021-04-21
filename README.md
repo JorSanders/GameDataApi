@@ -6,6 +6,7 @@ This project is still very much WIP
 Add the api secret to your user secrets
 ```shell
 dotnet user-secrets set "TrackerNetwork:ApiKey" "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+dotnet user-secrets set "ConnectionString:GameApiDb" "server=127.0.0.1;database=dbname;user=dbuser;password=dbpass"
 ```
 
 Run migrations

@@ -12,10 +12,10 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
         protected readonly ILogger<ApexBaseRepository> logger;
         protected readonly ApexDbContext apexDbContext;
 
-        protected ApexBaseRepository(ILogger<ApexBaseRepository> logger)
+        protected ApexBaseRepository(ILogger<ApexBaseRepository> logger, ApexDbContext apexDbContext)
         {
             this.logger = logger;
-            this.apexDbContext = new ApexDbContext();
+            this.apexDbContext = apexDbContext;
         }
     }
 }

@@ -35,5 +35,13 @@ namespace Jorkol.GameDataApi.Controllers
             var apexMatches = await this.apexMatchService.ApexMatchesAsync(platform, platformUserIdentifier);
             return new ApexMatchesResponse { total = apexMatches.Count(), apexMatches = apexMatches };
         }
+
+        [HttpGet]
+        [Route("[action]")]
+        public ApexMatchesResponse ApexMatchesFromDb([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
+        {
+            var apexMatches = this.apexMatchService.ApexMatchesFromDb(platform, platformUserIdentifier);
+            return new ApexMatchesResponse { total = apexMatches.Count(), apexMatches = apexMatches };
+        }
     }
 }

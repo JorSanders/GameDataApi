@@ -9,7 +9,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
 {
     public class ApexCharacterRepository : ApexBaseRepository, IApexCharacterRepository
     {
-        public ApexCharacterRepository(ILogger<ApexCharacterRepository> logger) : base(logger)
+        public ApexCharacterRepository(ILogger<ApexCharacterRepository> logger, ApexDbContext apexDbContext) : base(logger, apexDbContext)
         {
         }
 

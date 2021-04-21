@@ -27,12 +27,12 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
 
         public async Task<IEnumerable<ApexMatch>> ApexMatchesAsync(string platform, string platformUserIdentifier)
         {
-            IEnumerable<ApexMatch> apexMatches = new List<ApexMatch>();
+            List<ApexMatch> apexMatches = new List<ApexMatch>();
             var apexMatchesTrnTask = this.ApexMatchesFromTrnAsync(platform, platformUserIdentifier);
-            apexMatches = apexMatches.Concat(this.ApexMatchesFromDb(platform, platformUserIdentifier));
-            apexMatches = apexMatches.Concat(await apexMatchesTrnTask);
+            apexMatches.AddRange(this.ApexMatchesFromDb(platform, platformUserIdentifier));
+            var apexMatchesTrn = (await apexMatchesTrnTask).ToList<ApexMatch>();
 
-            return apexMatches;
+            return apexMatchesTrn.Concat(apexMatches).GroupBy(a => a.ApexMatchId).Select(g => g.First());
         }
 
         public IEnumerable<ApexMatch> ApexMatchesFromDb(string platform, string platformUserIdentifier)
@@ -44,8 +44,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
         {
             Task<ProfileSessionsResponseData> profileSessionsResponseTask = trackerNetworkApexClient.ProfileSessions(platform, platformUserIdentifier);
             IEnumerable<ApexMatch> apexMatches = this.apexMapper.ApexMatchesFromProfileSessions(await profileSessionsResponseTask);
-            this.apexMatchRepository.CreateOrUpdate(apexMatches);
-            return apexMatches;
+            return this.apexMatchRepository.CreateOrUpdate(apexMatches);
         }
     }
 }

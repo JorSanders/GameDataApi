@@ -1,3 +1,4 @@
+using Jorkol.GameDataApi.ApexLegends.Db;
 using Jorkol.GameDataApi.ApexLegends.Mappers;
 using Jorkol.GameDataApi.ApexLegends.Repositories;
 using Jorkol.GameDataApi.ApexLegends.Services;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -34,6 +36,10 @@ namespace Jorkol.GameDataApi
             });
 
             services.AddTransient<ITrackerNetworkApexClient>(s => new TrackerNetworkApexClient(Configuration["TrackerNetwork:ApiKey"]));
+
+            services.AddDbContext<ApexDbContext>(options =>
+                options.UseMySQL(Configuration["ConnectionString:GameApiDb"])
+            );
 
             services.AddScoped<IApexMatchRepository, ApexMatchRepository>();
             services.AddScoped<IApexCharacterRepository, ApexCharacterRepository>();
