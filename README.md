@@ -17,7 +17,7 @@ dotnet ef database update
 ## Development
 add migration
 ```shell
-dotnet ef migrations add MyFirstMigration
+dotnet ef migrations add InitialMigration
 ```
 
 ## Run

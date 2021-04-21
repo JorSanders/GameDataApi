@@ -12,5 +12,10 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
         public ApexAccountRepository(ApexDbContext apexDbContext) : base(apexDbContext)
         {
         }
+
+        public override ApexAccount Find(ApexAccount item)
+        {
+            return DbSet().Where(a => a.Name == item.Name && a.Platform == item.Platform).FirstOrDefault();
+        }
     }
 }

@@ -6,9 +6,9 @@ namespace Jorkol.GameDataApi.ApexLegends.Mappers
 {
     public interface IApexMapper
     {
-        IEnumerable<ApexMatch> ApexMatchesFromProfileSessions(ProfileSessionsResponseData profileSessionsResponseData);
+        IEnumerable<ApexMatch> ApexMatchesFromProfileSessions(ProfileSessionsResponseData profileSessionsResponseData, ApexAccount account);
 
-        IEnumerable<ApexMatch> ApexMatchesFromSession(Session session);
+        IEnumerable<ApexMatch> ApexMatchesFromSession(Session session, ApexAccount account);
 
         ApexCharacter ApexCharacterFromCharacter(Character character);
     }

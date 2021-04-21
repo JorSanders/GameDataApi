@@ -5,8 +5,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Models
 {
     public class ApexCharacter : ApexBaseModel
     {
-        [Key]
-        public long ApexId { get; set; }
+        public long TrnId { get; set; }
         public string Name { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -31,7 +32,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
 
         public T CreateOrUpdate(T item, bool save = true)
         {
-            T result = DbSet().Find(item);
+            T result = Find(item);
             if (result == null)
             {
                 result = DbSet().Add(item).Entity;
@@ -46,6 +47,11 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
                 int savedItems = apexDbContext.SaveChanges();
             }
             return result;
+        }
+
+        public virtual T Find(T item)
+        {
+            return DbSet().Find(item.Id);
         }
 
         public IEnumerable<T> CreateOrUpdate(IEnumerable<T> items)

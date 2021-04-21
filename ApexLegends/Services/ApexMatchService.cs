@@ -15,35 +15,50 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
         private readonly ILogger<ApexMatchService> logger;
         private readonly IApexMapper apexMapper;
         private readonly IApexMatchRepository apexMatchRepository;
+        private readonly IApexAccountRepository apexAccountRepository;
+
         private readonly ITrackerNetworkApexClient trackerNetworkApexClient;
 
-        public ApexMatchService(ILogger<ApexMatchService> logger, IApexMapper apexMapper, IApexMatchRepository apexMatchRepository, ITrackerNetworkApexClient trackerNetworkApexClient)
+        public ApexMatchService(
+            ILogger<ApexMatchService> logger,
+            IApexMapper apexMapper,
+            IApexMatchRepository apexMatchRepository,
+            IApexAccountRepository apexAccountRepository,
+            ITrackerNetworkApexClient trackerNetworkApexClient)
         {
             this.logger = logger;
             this.apexMapper = apexMapper;
             this.apexMatchRepository = apexMatchRepository;
             this.trackerNetworkApexClient = trackerNetworkApexClient;
+            this.apexAccountRepository = apexAccountRepository;
         }
 
-        public async Task<IEnumerable<ApexMatch>> ApexMatchesAsync(string platform, string platformUserIdentifier)
+        public async Task<IEnumerable<ApexMatch>> ApexMatchesAsync(ApexAccount account)
         {
+            account = apexAccountRepository.CreateOrUpdate(account);
             List<ApexMatch> apexMatches = new List<ApexMatch>();
-            var apexMatchesTrnTask = this.ApexMatchesFromTrnAsync(platform, platformUserIdentifier);
-            apexMatches.AddRange(this.ApexMatchesFromDb(platform, platformUserIdentifier));
+            var apexMatchesTrnTask = this.ApexMatchesFromTrnAsync(account);
+            apexMatches.AddRange(this.ApexMatchesFromDb(account));
             var apexMatchesTrn = (await apexMatchesTrnTask).ToList<ApexMatch>();
 
-            return apexMatchesTrn.Concat(apexMatches).GroupBy(a => a.ApexMatchId).Select(g => g.First());
+            // apexMatchesTrn overwrites apexMatches
+            return apexMatchesTrn.Concat(apexMatches).GroupBy(a => a.TrnId).Select(g => g.First());
         }
 
-        public IEnumerable<ApexMatch> ApexMatchesFromDb(string platform, string platformUserIdentifier)
+        public IEnumerable<ApexMatch> ApexMatchesFromDb(ApexAccount account)
         {
-            return this.apexMatchRepository.All();
+            account = apexAccountRepository.CreateOrUpdate(account);
+            var matchList = this.apexMatchRepository.FindByAccount(account);
+            return matchList;
         }
 
-        public async Task<IEnumerable<ApexMatch>> ApexMatchesFromTrnAsync(string platform, string platformUserIdentifier)
+        public async Task<IEnumerable<ApexMatch>> ApexMatchesFromTrnAsync(ApexAccount account)
         {
-            Task<ProfileSessionsResponseData> profileSessionsResponseTask = trackerNetworkApexClient.ProfileSessions(platform, platformUserIdentifier);
-            IEnumerable<ApexMatch> apexMatches = this.apexMapper.ApexMatchesFromProfileSessions(await profileSessionsResponseTask);
+            account = apexAccountRepository.CreateOrUpdate(account);
+            Task<ProfileSessionsResponseData> profileSessionsResponseTask = trackerNetworkApexClient.ProfileSessions(account.Platform, account.Name);
+
+            IEnumerable<ApexMatch> apexMatches = this.apexMapper.ApexMatchesFromProfileSessions(await profileSessionsResponseTask, account);
+
             return this.apexMatchRepository.CreateOrUpdate(apexMatches);
         }
     }

@@ -12,5 +12,10 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
         public ApexCharacterRepository(ApexDbContext apexDbContext) : base(apexDbContext)
         {
         }
+
+        public override ApexCharacter Find(ApexCharacter item)
+        {
+            return DbSet().Where(c => c.Name == item.Name).FirstOrDefault();
+        }
     }
 }

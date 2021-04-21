@@ -10,5 +10,6 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
         IEnumerable<T> All();
         T CreateOrUpdate(T item, bool save = true);
         IEnumerable<T> CreateOrUpdate(IEnumerable<T> items);
+        T Find(T item);
     }
 }

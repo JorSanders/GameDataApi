@@ -5,10 +5,10 @@ namespace Jorkol.GameDataApi.ApexLegends.Models
 {
     public class ApexMatch : ApexBaseModel
     {
-        [Key]
-        public Guid ApexMatchId { get; set; }
+        public Guid TrnId { get; set; }
         public DateTime EndDateTime { get; set; }
-        public ApexCharacter Character { get; set; }
+        public virtual ApexCharacter Character { get; set; }
+        public virtual ApexAccount Account { get; set; }
         public long? PlayerLevel { get; set; }
         public long? Kills { get; set; }
         public long? Damage { get; set; }

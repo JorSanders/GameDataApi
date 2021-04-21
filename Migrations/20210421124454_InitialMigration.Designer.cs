@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameDataApi.Migrations
 {
     [DbContext(typeof(ApexDbContext))]
-    [Migration("20210420195340_MyFirstMigration")]
-    partial class MyFirstMigration
+    [Migration("20210421124454_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,28 +19,51 @@ namespace GameDataApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.5");
 
-            modelBuilder.Entity("Jorkol.GameDataApi.ApexLegends.Models.ApexCharacter", b =>
+            modelBuilder.Entity("Jorkol.GameDataApi.ApexLegends.Models.ApexAccount", b =>
                 {
-                    b.Property<long>("ApexId")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("ApexId");
+                    b.Property<string>("Platform")
+                        .HasColumnType("text");
 
-                    b.ToTable("ApexCharacter");
+                    b.HasKey("Id");
+
+                    b.ToTable("ApexAccounts");
+                });
+
+            modelBuilder.Entity("Jorkol.GameDataApi.ApexLegends.Models.ApexCharacter", b =>
+                {
+                    b.Property<byte[]>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varbinary(16)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<long>("TrnId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ApexCharacters");
                 });
 
             modelBuilder.Entity("Jorkol.GameDataApi.ApexLegends.Models.ApexMatch", b =>
                 {
-                    b.Property<byte[]>("ApexMatchId")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varbinary(16)");
 
-                    b.Property<long?>("CharacterApexId")
-                        .HasColumnType("bigint");
+                    b.Property<byte[]>("AccountId")
+                        .HasColumnType("varbinary(16)");
+
+                    b.Property<byte[]>("CharacterId")
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<long?>("Damage")
                         .HasColumnType("bigint");
@@ -78,18 +101,30 @@ namespace GameDataApi.Migrations
                     b.Property<long?>("SmokeGrenadeEnemiesHit")
                         .HasColumnType("bigint");
 
-                    b.HasKey("ApexMatchId");
+                    b.Property<byte[]>("TrnId")
+                        .IsRequired()
+                        .HasColumnType("varbinary(16)");
 
-                    b.HasIndex("CharacterApexId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("CharacterId");
 
                     b.ToTable("ApexMatches");
                 });
 
             modelBuilder.Entity("Jorkol.GameDataApi.ApexLegends.Models.ApexMatch", b =>
                 {
+                    b.HasOne("Jorkol.GameDataApi.ApexLegends.Models.ApexAccount", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId");
+
                     b.HasOne("Jorkol.GameDataApi.ApexLegends.Models.ApexCharacter", "Character")
                         .WithMany()
-                        .HasForeignKey("CharacterApexId");
+                        .HasForeignKey("CharacterId");
+
+                    b.Navigation("Account");
 
                     b.Navigation("Character");
                 });

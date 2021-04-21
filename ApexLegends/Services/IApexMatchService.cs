@@ -7,8 +7,8 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
 {
     public interface IApexMatchService
     {
-        Task<IEnumerable<ApexMatch>> ApexMatchesFromTrnAsync(string platform, string platformUserIdentifier);
-        IEnumerable<ApexMatch> ApexMatchesFromDb(string platform, string platformUserIdentifier);
-        Task<IEnumerable<ApexMatch>> ApexMatchesAsync(string platform, string platformUserIdentifier);
+        Task<IEnumerable<ApexMatch>> ApexMatchesFromTrnAsync(ApexAccount account);
+        IEnumerable<ApexMatch> ApexMatchesFromDb(ApexAccount account);
+        Task<IEnumerable<ApexMatch>> ApexMatchesAsync(ApexAccount account);
     }
 }

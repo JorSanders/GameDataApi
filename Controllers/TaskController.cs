@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Jorkol.GameDataApi.ApexLegends.Models;
 using Jorkol.GameDataApi.ApexLegends.Services;
 using Jorkol.GameDataApi.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -30,17 +31,19 @@ namespace Jorkol.GameDataApi.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<ApexMatchesResponse> ApexMatches([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
+        public async Task<ApexMatchesResponse> ApexMatches([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "name")] string name)
         {
-            var apexMatches = await this.apexMatchService.ApexMatchesAsync(platform, platformUserIdentifier);
+            var account = new ApexAccount { Name = name, Platform = platform };
+            var apexMatches = await this.apexMatchService.ApexMatchesAsync(account);
             return new ApexMatchesResponse { total = apexMatches.Count(), apexMatches = apexMatches };
         }
 
         [HttpGet]
         [Route("[action]")]
-        public ApexMatchesResponse ApexMatchesFromDb([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "platformUserIdentifier")] string platformUserIdentifier)
+        public ApexMatchesResponse ApexMatchesFromDb([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "name")] string name)
         {
-            var apexMatches = this.apexMatchService.ApexMatchesFromDb(platform, platformUserIdentifier);
+            var account = new ApexAccount { Name = name, Platform = platform };
+            var apexMatches = this.apexMatchService.ApexMatchesFromDb(account);
             return new ApexMatchesResponse { total = apexMatches.Count(), apexMatches = apexMatches };
         }
     }

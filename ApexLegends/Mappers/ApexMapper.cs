@@ -15,20 +15,20 @@ namespace Jorkol.GameDataApi.ApexLegends.Mappers
             this.apexCharacterRepository = apexCharacterRepository;
         }
 
-        public IEnumerable<ApexMatch> ApexMatchesFromProfileSessions(ProfileSessionsResponseData profileSessionsResponseData)
+        public IEnumerable<ApexMatch> ApexMatchesFromProfileSessions(ProfileSessionsResponseData profileSessionsResponseData, ApexAccount account)
         {
             List<ApexMatch> ApexMatchList = new List<ApexMatch>();
 
 
             foreach (Session session in profileSessionsResponseData.Items)
             {
-                ApexMatchList.AddRange(ApexMatchesFromSession(session));
+                ApexMatchList.AddRange(ApexMatchesFromSession(session, account));
             }
 
             return ApexMatchList;
         }
 
-        public IEnumerable<ApexMatch> ApexMatchesFromSession(Session session)
+        public IEnumerable<ApexMatch> ApexMatchesFromSession(Session session, ApexAccount account)
         {
             List<ApexMatch> apexMatchList = new List<ApexMatch>();
 
@@ -36,9 +36,10 @@ namespace Jorkol.GameDataApi.ApexLegends.Mappers
             {
                 ApexMatch apexMatch = new ApexMatch();
 
-                apexMatch.ApexMatchId = Guid.Parse(match?.Id);
+                apexMatch.TrnId = Guid.Parse(match?.Id);
                 apexMatch.EndDateTime = DateTime.Parse(match?.Metadata?.EndDate?.Value);
                 apexMatch.Character = this.ApexCharacterFromCharacter(match?.Metadata?.Character);
+                apexMatch.Account = account;
                 apexMatch.PlayerLevel = match.Stats?.Level?.Value;
                 apexMatch.Kills = match.Stats?.Kills?.Value;
                 apexMatch.Damage = match.Stats?.Damage?.Value;
@@ -59,8 +60,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Mappers
 
         public ApexCharacter ApexCharacterFromCharacter(Character character)
         {
-            ApexCharacter apexCharacter = new ApexCharacter { ApexId = character.Value, Name = character.DisplayValue };
-            return apexCharacterRepository.CreateOrUpdate(apexCharacter);
+            return apexCharacterRepository.CreateOrUpdate(new ApexCharacter { TrnId = character.Value, Name = character.DisplayValue });
         }
     }
 }
