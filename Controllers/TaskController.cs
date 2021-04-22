@@ -56,5 +56,19 @@ namespace Jorkol.GameDataApi.Controllers
             var accounts = apexAccountService.ApexAccounts();
             return new ApexAccountsResponse { Total = accounts.Count(), ApexAccounts = accounts };
         }
+
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<int> MatchesForAllAccountsAsync()
+        {
+            var accounts = apexAccountService.ApexAccounts().ToList();
+
+            int totalMatches = 0;
+            foreach (var account in accounts)
+            {
+                totalMatches += (await apexMatchService.ApexMatchesFromTrnAsync(account)).Count();
+            }
+            return totalMatches;
+        }
     }
 }
