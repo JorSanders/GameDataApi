@@ -15,8 +15,6 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
         private readonly ILogger<ApexMatchService> logger;
         private readonly IApexMapper apexMapper;
         private readonly IApexMatchRepository apexMatchRepository;
-        private readonly IApexAccountRepository apexAccountRepository;
-
         private readonly ITrackerNetworkApexClient trackerNetworkApexClient;
 
         public ApexMatchService(
@@ -30,12 +28,10 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
             this.apexMapper = apexMapper;
             this.apexMatchRepository = apexMatchRepository;
             this.trackerNetworkApexClient = trackerNetworkApexClient;
-            this.apexAccountRepository = apexAccountRepository;
         }
 
         public async Task<IEnumerable<ApexMatch>> ApexMatchesAsync(ApexAccount account)
         {
-            account = apexAccountRepository.CreateOrUpdate(account);
             List<ApexMatch> apexMatches = new List<ApexMatch>();
             var apexMatchesTrnTask = this.ApexMatchesFromTrnAsync(account);
             apexMatches.AddRange(this.ApexMatchesFromDb(account));
@@ -47,13 +43,11 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
 
         public IEnumerable<ApexMatch> ApexMatchesFromDb(ApexAccount account)
         {
-            account = apexAccountRepository.CreateOrUpdate(account);
             return this.apexMatchRepository.FindByAccount(account);
         }
 
         public async Task<IEnumerable<ApexMatch>> ApexMatchesFromTrnAsync(ApexAccount account)
         {
-            account = apexAccountRepository.CreateOrUpdate(account);
             Task<ProfileSessionsResponseData> profileSessionsResponseTask = trackerNetworkApexClient.ProfileSessions(account.Platform, account.Name);
 
             IEnumerable<ApexMatch> apexMatches = this.apexMapper.ApexMatchesFromProfileSessions(await profileSessionsResponseTask, account);

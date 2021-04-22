@@ -15,11 +15,13 @@ namespace Jorkol.GameDataApi.Controllers
     {
         private readonly ILogger<TaskController> logger;
         private readonly IApexMatchService apexMatchService;
+        private readonly IApexAccountService apexAccountService;
 
-        public TaskController(ILogger<TaskController> logger, IApexMatchService apexMatchService)
+        public TaskController(ILogger<TaskController> logger, IApexMatchService apexMatchService, IApexAccountService apexAccountService)
         {
             this.logger = logger;
             this.apexMatchService = apexMatchService;
+            this.apexAccountService = apexAccountService;
         }
 
         [HttpGet]
@@ -35,7 +37,7 @@ namespace Jorkol.GameDataApi.Controllers
         {
             var account = new ApexAccount { Name = name, Platform = platform };
             var apexMatches = await this.apexMatchService.ApexMatchesAsync(account);
-            return new ApexMatchesResponse { total = apexMatches.Count(), apexMatches = apexMatches };
+            return new ApexMatchesResponse { Total = apexMatches.Count(), ApexMatches = apexMatches };
         }
 
         [HttpGet]
@@ -44,7 +46,15 @@ namespace Jorkol.GameDataApi.Controllers
         {
             var account = new ApexAccount { Name = name, Platform = platform };
             var apexMatches = this.apexMatchService.ApexMatchesFromDb(account);
-            return new ApexMatchesResponse { total = apexMatches.Count(), apexMatches = apexMatches };
+            return new ApexMatchesResponse { Total = apexMatches.Count(), ApexMatches = apexMatches };
+        }
+
+        [HttpGet]
+        [Route("[action]")]
+        public ApexAccountsResponse ApexAccounts()
+        {
+            var accounts = apexAccountService.ApexAccounts();
+            return new ApexAccountsResponse { Total = accounts.Count(), ApexAccounts = accounts };
         }
     }
 }

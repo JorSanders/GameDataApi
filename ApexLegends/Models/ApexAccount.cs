@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Jorkol.GameDataApi.ApexLegends.Models
@@ -8,5 +9,6 @@ namespace Jorkol.GameDataApi.ApexLegends.Models
         public string Platform { get; set; }
         public string Name { get; set; }
 
+        public IEnumerable<ApexMatch> ApexMatches { get; set; }
     }
 }

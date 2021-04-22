@@ -1,11 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Jorkol.GameDataApi.ApexLegends.Db;
 using Jorkol.GameDataApi.ApexLegends.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace Jorkol.GameDataApi.ApexLegends.Repositories
 {
@@ -25,12 +22,12 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
             return apexDbContext.Set<T>();
         }
 
-        public IEnumerable<T> All()
+        public virtual IEnumerable<T> All()
         {
             return DbSet();
         }
 
-        public T CreateOrUpdate(T item, bool save = true)
+        public virtual T CreateOrUpdate(T item, bool save = true)
         {
             T result = Find(item);
             if (result == null)
@@ -54,7 +51,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
             return DbSet().Find(item.Id);
         }
 
-        public IEnumerable<T> CreateOrUpdate(IEnumerable<T> items)
+        public virtual IEnumerable<T> CreateOrUpdate(IEnumerable<T> items)
         {
             items.ToList().ForEach(item => CreateOrUpdate(item, false));
             int savedItems = apexDbContext.SaveChanges();

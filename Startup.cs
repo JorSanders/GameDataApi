@@ -49,6 +49,7 @@ namespace Jorkol.GameDataApi
             services.AddScoped<IApexAccountRepository, ApexAccountRepository>();
             services.AddScoped<IApexCharacterRepository, ApexCharacterRepository>();
             services.AddScoped<IApexMatchService, ApexMatchService>();
+            services.AddScoped<IApexAccountService, ApexAccountService>();
             services.AddScoped<IApexMapper, ApexMapper>();
         }
 
