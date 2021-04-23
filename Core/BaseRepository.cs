@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Jorkol.GameDataApi.ApexLegends.Db;
@@ -8,28 +9,33 @@ namespace Jorkol.GameDataApi.Core
 {
     public abstract class BaseRepository<T> : IBaseRepository<T> where T : EntityBase
     {
-        protected readonly ApexDbContext apexDbContext;
+        protected readonly DbContext dbContext;
 
         protected object Model;
 
-        public BaseRepository(ApexDbContext apexDbContext)
+        public BaseRepository(DbContext apexDbContext)
         {
-            this.apexDbContext = apexDbContext;
+            this.dbContext = apexDbContext;
         }
 
         protected DbSet<T> DbSet()
         {
-            return apexDbContext.Set<T>();
+            return dbContext.Set<T>();
         }
 
         public virtual IEnumerable<T> All()
         {
-            return DbSet();
+            return DbSet().ToList();
+        }
+
+        public virtual T Find(Guid id)
+        {
+            return DbSet().Find(id);
         }
 
         public virtual T CreateOrUpdate(T item, bool save = true)
         {
-            T result = Find(item);
+            T result = Find(item.Id);
             if (result == null)
             {
                 result = DbSet().Add(item).Entity;
@@ -41,21 +47,29 @@ namespace Jorkol.GameDataApi.Core
 
             if (save)
             {
-                int savedItems = apexDbContext.SaveChanges();
+                int savedItems = dbContext.SaveChanges();
             }
             return result;
-        }
-
-        public virtual T Find(T item)
-        {
-            return DbSet().Find(item.Id);
         }
 
         public virtual IEnumerable<T> CreateOrUpdate(IEnumerable<T> items)
         {
             items.ToList().ForEach(item => CreateOrUpdate(item, false));
-            int savedItems = apexDbContext.SaveChanges();
+            int savedItems = dbContext.SaveChanges();
             return items;
         }
+
+        public virtual void Delete(T item, bool save = true)
+        {
+            DbSet().Remove(item);
+            dbContext.SaveChanges();
+        }
+
+        public virtual void Delete(IEnumerable<T> items)
+        {
+            items.ToList().ForEach(item => this.Delete(item, false));
+            dbContext.SaveChanges();
+        }
+
     }
 }

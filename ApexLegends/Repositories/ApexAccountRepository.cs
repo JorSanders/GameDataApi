@@ -13,14 +13,14 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
         {
         }
 
-        public override ApexAccount Find(ApexAccount item)
+        public ApexAccount Find(string name, string platform)
         {
-            return DbSet().Where(a => a.Name == item.Name && a.Platform == item.Platform).FirstOrDefault();
+            return DbSet().Where(a => a.Name == name && a.Platform == platform).FirstOrDefault();
         }
 
-        public override IEnumerable<ApexAccount> All()
+        public IEnumerable<ApexAccount> WithMatches()
         {
-            return DbSet().Where(a => a.ApexMatches.Any());
+            return DbSet().Where(a => a.ApexMatches.Any()).ToList();
         }
     }
 }

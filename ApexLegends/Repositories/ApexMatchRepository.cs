@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Jorkol.GameDataApi.ApexLegends.Db;
@@ -13,9 +14,9 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
         {
 
         }
-        public override ApexMatch Find(ApexMatch item)
+        public ApexMatch FindByTrnId(Guid trnId)
         {
-            return DbSet().Where(m => m.TrnId == item.TrnId).FirstOrDefault();
+            return DbSet().Where(m => m.TrnId == trnId).FirstOrDefault();
         }
 
         public IEnumerable<ApexMatch> FindByAccount(ApexAccount account)

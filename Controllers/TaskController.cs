@@ -36,7 +36,7 @@ namespace Jorkol.GameDataApi.Controllers
         public async Task<ApexMatchesResponse> ApexMatches([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "name")] string name)
         {
             var account = new ApexAccount { Name = name, Platform = platform };
-            var apexMatches = await this.apexMatchService.ApexMatchesAsync(account);
+            var apexMatches = await this.apexMatchService.FromTrnAndDbAsync(account);
             return new ApexMatchesResponse { Total = apexMatches.Count(), ApexMatches = apexMatches };
         }
 
@@ -45,7 +45,7 @@ namespace Jorkol.GameDataApi.Controllers
         public ApexMatchesResponse ApexMatchesFromDb([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "name")] string name)
         {
             var account = new ApexAccount { Name = name, Platform = platform };
-            var apexMatches = this.apexMatchService.ApexMatchesFromDb(account);
+            var apexMatches = this.apexMatchService.FindByAccount(account);
             return new ApexMatchesResponse { Total = apexMatches.Count(), ApexMatches = apexMatches };
         }
 
@@ -53,7 +53,7 @@ namespace Jorkol.GameDataApi.Controllers
         [Route("[action]")]
         public ApexAccountsResponse ApexAccounts()
         {
-            var accounts = apexAccountService.ApexAccounts();
+            var accounts = apexAccountService.WithMatches();
             return new ApexAccountsResponse { Total = accounts.Count(), ApexAccounts = accounts };
         }
 
@@ -61,12 +61,12 @@ namespace Jorkol.GameDataApi.Controllers
         [Route("[action]")]
         public async Task<int> MatchesForAllAccountsAsync()
         {
-            var accounts = apexAccountService.ApexAccounts().ToList();
+            var accounts = apexAccountService.All();
 
             int totalMatches = 0;
             foreach (var account in accounts)
             {
-                totalMatches += (await apexMatchService.ApexMatchesFromTrnAsync(account)).Count();
+                totalMatches += (await apexMatchService.FromTrnAsync(account)).Count();
             }
             return totalMatches;
         }
