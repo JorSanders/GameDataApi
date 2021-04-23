@@ -27,46 +27,46 @@ namespace Jorkol.GameDataApi.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<ApexMatchesResponse> MatchesByAccount([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "name")] string name)
+        public async Task<ListResponse<ApexMatch>> MatchesByAccount([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "name")] string name)
         {
             var account = accountService.ByNameAndPlatform(name, platform);
-            var apexMatches = await this.matchService.FromTrnAndDbAsync(account);
-            return new ApexMatchesResponse { Total = apexMatches.Count(), ApexMatches = apexMatches };
+            var matches = await this.matchService.FromTrnAndDbAsync(account);
+            return new ListResponse<ApexMatch>(matches);
         }
 
         [HttpGet]
         [Route("[action]")]
-        public ApexMatchesResponse MatchesFromDbByAccount([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "name")] string name)
+        public ListResponse<ApexMatch> MatchesFromDbByAccount([FromQuery(Name = "platform")] string platform, [FromQuery(Name = "name")] string name)
         {
             var account = accountService.ByNameAndPlatform(name, platform);
             var matches = this.matchService.FindByAccount(account);
-            return new ApexMatchesResponse { Total = matches.Count(), ApexMatches = matches };
+            return new ListResponse<ApexMatch>(matches);
         }
 
         [HttpGet]
         [Route("[action]")]
-        public ApexAccountsResponse Accounts()
+        public ListResponse<ApexAccount> Accounts()
         {
             var accounts = accountService.WithMatches();
-            return new ApexAccountsResponse { Total = accounts.Count(), ApexAccounts = accounts };
+            return new ListResponse<ApexAccount>(accounts);
         }
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<ApexMatchesResponse> TrnMatchesOfAllAccounts()
+        public async Task<ListResponse<ApexMatch>> TrnMatchesOfAllAccounts()
         {
             var accounts = accountService.All();
             var matches = await matchService.FromTrnAsync(accounts);
 
-            return new ApexMatchesResponse { Total = matches.Count(), ApexMatches = matches };
+            return new ListResponse<ApexMatch>(matches);
         }
 
         [HttpGet]
         [Route("[action]")]
-        public ApexMatchesResponse AllMatchesFromDb()
+        public ListResponse<ApexMatch> AllMatchesFromDb()
         {
             var matches = matchService.All();
-            return new ApexMatchesResponse { Total = matches.Count(), ApexMatches = matches };
+            return new ListResponse<ApexMatch>(matches);
         }
 
         [HttpDelete]
