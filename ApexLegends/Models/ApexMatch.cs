@@ -1,9 +1,10 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Jorkol.GameDataApi.Core;
 
 namespace Jorkol.GameDataApi.ApexLegends.Models
 {
-    public class ApexMatch : ApexBaseModel
+    public class ApexMatch : EntityBase
     {
         public Guid TrnId { get; set; }
         public DateTime EndDateTime { get; set; }

@@ -4,15 +4,15 @@ using Jorkol.GameDataApi.ApexLegends.Db;
 using Jorkol.GameDataApi.ApexLegends.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Jorkol.GameDataApi.ApexLegends.Repositories
+namespace Jorkol.GameDataApi.Core
 {
-    public abstract class ApexBaseRepository<T> : IApexBaseRepository<T> where T : ApexBaseModel
+    public abstract class BaseRepository<T> : IBaseRepository<T> where T : EntityBase
     {
         protected readonly ApexDbContext apexDbContext;
 
         protected object Model;
 
-        public ApexBaseRepository(ApexDbContext apexDbContext)
+        public BaseRepository(ApexDbContext apexDbContext)
         {
             this.apexDbContext = apexDbContext;
         }

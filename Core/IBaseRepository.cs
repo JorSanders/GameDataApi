@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace Jorkol.GameDataApi.ApexLegends.Repositories
+namespace Jorkol.GameDataApi.Core
 {
-    public interface IApexBaseRepository<T>
+    public interface IBaseRepository<T>
     {
         IEnumerable<T> All();
         T CreateOrUpdate(T item, bool save = true);

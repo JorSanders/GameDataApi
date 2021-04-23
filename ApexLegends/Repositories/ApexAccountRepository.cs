@@ -3,10 +3,11 @@ using System.Linq;
 
 using Jorkol.GameDataApi.ApexLegends.Db;
 using Jorkol.GameDataApi.ApexLegends.Models;
+using Jorkol.GameDataApi.Core;
 
 namespace Jorkol.GameDataApi.ApexLegends.Repositories
 {
-    public class ApexAccountRepository : ApexBaseRepository<ApexAccount>, IApexAccountRepository
+    public class ApexAccountRepository : BaseRepository<ApexAccount>, IApexAccountRepository
     {
         public ApexAccountRepository(ApexDbContext apexDbContext) : base(apexDbContext)
         {

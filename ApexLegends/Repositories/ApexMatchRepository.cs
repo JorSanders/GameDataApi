@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Jorkol.GameDataApi.ApexLegends.Db;
 using Jorkol.GameDataApi.ApexLegends.Models;
+using Jorkol.GameDataApi.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jorkol.GameDataApi.ApexLegends.Repositories
 {
-    public class ApexMatchRepository : ApexBaseRepository<ApexMatch>, IApexMatchRepository
+    public class ApexMatchRepository : BaseRepository<ApexMatch>, IApexMatchRepository
     {
         public ApexMatchRepository(ApexDbContext apexDbContext) : base(apexDbContext)
         {
