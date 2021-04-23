@@ -21,7 +21,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
             ILogger<ApexMatchService> logger,
             IApexMapper apexMapper,
             ITrackerNetworkApexClient trackerNetworkApexClient,
-            ApexMatchRepository repository) : base(repository)
+            IApexMatchRepository repository) : base(repository)
         {
             this.logger = logger;
             this.apexMapper = apexMapper;
@@ -33,7 +33,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
             List<ApexMatch> apexMatches = new List<ApexMatch>();
             var apexMatchesTrnTask = this.FromTrnAsync(account);
             apexMatches.AddRange(this.FindByAccount(account));
-            var apexMatchesTrn = (await apexMatchesTrnTask).ToList<ApexMatch>();
+            var apexMatchesTrn = await apexMatchesTrnTask;
 
             // apexMatchesTrn overwrites apexMatches
             return apexMatchesTrn.Concat(apexMatches).GroupBy(a => a.TrnId).Select(g => g.First());
@@ -52,5 +52,16 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
 
             return this.repository.CreateOrUpdate(apexMatches);
         }
+
+        public async Task<IEnumerable<ApexMatch>> FromTrnAsync(IEnumerable<ApexAccount> accounts)
+        {
+            List<ApexMatch> matches = new List<ApexMatch>();
+            foreach (var account in accounts)
+            {
+                matches.AddRange(await this.FromTrnAsync(account));
+            }
+            return matches;
+        }
+
     }
 }

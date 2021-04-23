@@ -13,9 +13,15 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
         {
         }
 
-        public ApexAccount Find(string name, string platform)
+        public ApexAccount FindOrCreate(string name, string platform)
         {
-            return DbSet().Where(a => a.Name == name && a.Platform == platform).FirstOrDefault();
+            ApexAccount account = DbSet().Where(a => a.Name == name && a.Platform == platform).FirstOrDefault();
+            if (account == null)
+            {
+                account = new ApexAccount { Name = name, Platform = platform };
+                account = CreateOrUpdate(account);
+            }
+            return account;
         }
 
         public IEnumerable<ApexAccount> WithMatches()

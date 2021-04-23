@@ -10,19 +10,22 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
     public class ApexAccountService : BaseService<IApexAccountRepository, ApexAccount>, IApexAccountService
     {
         private readonly ILogger<ApexAccountService> logger;
-        private readonly IApexAccountRepository apexAccountRepository;
 
         public ApexAccountService(
             ILogger<ApexAccountService> logger,
             IApexAccountRepository apexAccountRepository) : base(apexAccountRepository)
         {
             this.logger = logger;
-            this.apexAccountRepository = apexAccountRepository;
+        }
+
+        public ApexAccount ByNameAndPlatform(string name, string platform)
+        {
+            return repository.FindOrCreate(name, platform);
         }
 
         public IEnumerable<ApexAccount> WithMatches()
         {
-            return apexAccountRepository.WithMatches();
+            return repository.WithMatches();
         }
     }
 }

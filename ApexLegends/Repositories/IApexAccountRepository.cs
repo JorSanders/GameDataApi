@@ -7,5 +7,6 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
     public interface IApexAccountRepository : IBaseRepository<ApexAccount>
     {
         IEnumerable<ApexAccount> WithMatches();
+        ApexAccount FindOrCreate(string name, string platform);
     }
 }

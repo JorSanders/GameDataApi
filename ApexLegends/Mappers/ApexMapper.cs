@@ -60,7 +60,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Mappers
 
         public ApexCharacter ApexCharacterFromCharacter(Character character)
         {
-            return apexCharacterRepository.CreateOrUpdate(new ApexCharacter { TrnId = character.Value, Name = character.DisplayValue });
+            return apexCharacterRepository.FindOrCreate(character.DisplayValue, character.Value);
         }
     }
 }

@@ -9,5 +9,7 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
     public interface IApexAccountService : IBaseService<ApexAccount>
     {
         IEnumerable<ApexAccount> WithMatches();
+
+        ApexAccount ByNameAndPlatform(string name, string platform);
     }
 }

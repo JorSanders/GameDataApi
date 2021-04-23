@@ -12,9 +12,15 @@ namespace Jorkol.GameDataApi.ApexLegends.Repositories
         {
         }
 
-        public ApexCharacter Find(string name)
+        public ApexCharacter FindOrCreate(string name, long trnId)
         {
-            return DbSet().Where(c => c.Name == name).FirstOrDefault();
+            ApexCharacter character = DbSet().Where(c => c.Name == name && c.TrnId == trnId).FirstOrDefault();
+            if (character == null)
+            {
+                character = new ApexCharacter { Name = name, TrnId = trnId };
+                character = CreateOrUpdate(character);
+            }
+            return character;
         }
     }
 }
