@@ -1,5 +1,5 @@
 # GameDataApi
-GameDataApi is a wrapper around the API of games that I play. In order to save the data to a DB or ELK stack
+GameDataApi is a wrapper around the API of games that I play. In order to save the data to a DB or ELK stack.
 This project is still very much WIP
 
 ## Setup
