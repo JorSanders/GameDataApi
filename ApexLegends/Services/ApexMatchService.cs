@@ -48,6 +48,15 @@ namespace Jorkol.GameDataApi.ApexLegends.Services
         {
             Task<ProfileSessionsResponseData> profileSessionsResponseTask = trackerNetworkApexClient.ProfileSessions(account.Platform, account.Name);
 
+            var profileSessionsResponse = await profileSessionsResponseTask;
+
+            bool hasActiveSession = profileSessionsResponse.Items.Where(s => s.Metadata.IsActive.Value).Any();
+
+            if (hasActiveSession)
+            {
+                logger.LogInformation($"Account '{account.Name}' has an active session");
+            }
+
             IEnumerable<ApexMatch> apexMatches = this.apexMapper.ApexMatchesFromProfileSessions(await profileSessionsResponseTask, account);
 
             return this.repository.CreateOrUpdate(apexMatches);
