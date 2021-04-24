@@ -1,0 +1,4 @@
+**/appsettings.Development.json
+
+# Don't include JSON files used to create models
+TrackerNetworkClient/**/*Response.json
